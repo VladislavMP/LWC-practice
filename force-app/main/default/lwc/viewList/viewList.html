@@ -1,0 +1,116 @@
+<template>
+    <lightning-card class="card-container">
+    <div class="slds-grid slds-grid_vertical">
+        <div class="slds-col slds-m-top_small">
+            <lightning-button
+                class="slds-m-left_small"
+                label="Create"
+                onclick={handleOpenCreateWindow}
+                >
+            </lightning-button>
+        </div>
+        <div class="slds-col slds-m-left_small slds-m-top_small slds-m-right_small slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3 col-border">
+            <template if:true={listContact10}>
+                <template for:each={listContact10} for:item="contact">
+                    <div key={contact.Id}>
+                        <c-view-item   
+                            key={contact.Id}
+                            contact={contact}
+                            onselect={handleSelect}
+                            onupdate={handleUpdate}
+                            onedit={handleOpenEditWindow}>
+                        </c-view-item>
+                    </div>
+                </template>
+            </template>
+            </div>
+            <div class="slds-col slds-size_2-of-3">
+            <template if:true={openWindow.openStart}>
+                <div class="slds-align_absolute-center info">
+                    <img src={cactus}>
+                </div>
+            </template>
+            <template if:true={openWindow.openView}>
+                <div class="slds-align_absolute-center info">
+                    Name: {editContact.Name}<br>
+                    Phone: {editContact.Phone}<br>
+                    Email: {editContact.Email}
+                </div>
+            </template>
+            <template if:true={openWindow.openEdit}>
+                <div class="slds-card slds-align_absolute-center info">
+                    <div class="slds-grid slds-grid_vertical">
+                        <p class="slds-col slds-m-top_small">
+                        <lightning-input
+                            label="LastName"
+                            class="edit-fild"
+                            type="text"
+                            value = {editContact.Name}
+                        ></lightning-input></p>
+                        <p class="slds-col slds-m-top_small">
+                        <lightning-input
+                            label="Phone"
+                            class="edit-fild"
+                            type="text"
+                            value = {editContact.Phone}
+                        ></lightning-input></p>
+                        <p class="slds-col slds-m-top_small">
+                        <lightning-input
+                            label="Email"
+                            class="edit-fild"
+                            type="text"
+                            value = {editContact.Email}
+                        ></lightning-input></p>
+                        <lightning-button
+                            class="slds-m-left_small slds-m-top_large"
+                            label="Update"
+                            onclick={handleEditContact}
+                        >
+                        </lightning-button>
+                    </div>
+                </div>
+            </template>
+            <template if:true={openWindow.openCreate}>
+                <div class="slds-card slds-align_absolute-center info">
+                    <div class="slds-grid slds-grid_vertical">
+                        <p class="slds-col slds-m-top_small">
+                        <lightning-input
+                            label="LastName"
+                            class="create-fild"
+                            type="text"
+                        ></lightning-input></p>
+                        <p class="slds-col slds-m-top_small">
+                        <lightning-input
+                            label="Phone"
+                            class="create-fild"
+                            type="text"
+                        ></lightning-input></p>
+                        <p class="slds-col slds-m-top_small">
+                        <lightning-input
+                            label="Email"
+                            class="create-fild"
+                            type="text"
+                        ></lightning-input></p>
+                        <lightning-button
+                            class="slds-m-left_small slds-m-top_large"
+                            label="Create"
+                            onclick={handleCreateContact}
+                        >
+                        </lightning-button>
+                    </div>
+                </div>
+            </template>
+            </div>
+        </div>
+        <div class="slds-col slds-m-top_small slds-align_absolute-center">
+            <c-view-pages   
+                current-page={currentPage}
+                total-page={totalPage}
+                onpagechanged={handlePageChanged}
+            >
+            </c-view-pages>
+        </div>
+    </div>
+    </lightning-card>
+</template>

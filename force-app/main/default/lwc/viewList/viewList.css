@@ -1,0 +1,29 @@
+
+.info {
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(49, 49, 49);
+    border-width: 1px;
+    padding: 1px;
+    width: 100%;
+    height: 100%;
+}
+
+.col-border {
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(49, 49, 49);
+    border-width: 1px;
+    padding: 5px;
+    height: 503px;
+}
+
+.create-fild{
+    background-color: rgb(255, 255, 255);
+}
+
+.edit-fild{
+    background-color: rgb(255, 255, 255);
+}
+
+.image{
+    background-color: rgb(255, 255, 255);
+}

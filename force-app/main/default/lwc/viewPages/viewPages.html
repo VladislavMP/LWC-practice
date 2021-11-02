@@ -1,0 +1,15 @@
+<template>
+    <div>
+    <lightning-button 
+        label="<-----"
+        onclick={previousHandler}
+        disabled={previousDisabled}>
+    </lightning-button>
+    {currentPage}/{totalPage}
+    <lightning-button 
+        label="----->"
+        onclick={nextHandler}
+        disabled={nextDisabled}>
+    </lightning-button>
+    </div>
+</template>

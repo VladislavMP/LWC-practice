@@ -1,0 +1,32 @@
+<aura:component
+    controller="ContactController"
+    implements="flexipage:availableForAllPageTypes"
+>
+    <aura:attribute name="contactId" type="Id" />
+    <aura:attribute name="contact" type="Object" />
+
+    <lightning:messageChannel
+        type="Record_Selected__c"
+        aura:id="recordSelected"
+        onMessage="{!c.handleMessage}"
+    />
+
+    <force:recordData
+        aura:id="service"
+        recordId="{!v.contactId}"
+        fields="['Name', 'Title', 'Phone', 'Email']"
+        targetFields="{!v.contact}"
+    />
+
+    <lightning:card>
+
+        <div class="slds-m-around_medium">
+            <aura:if isTrue="{!v.contact}">
+                <p>{!v.contact.Name}</p>
+                <p>{!v.contact.Title}</p>
+                <p><lightning:formattedPhone value="{!v.contact.Phone}" /></p>
+                <p><lightning:formattedEmail value="{!v.contact.Email}" /></p>
+            </aura:if>
+        </div>
+    </lightning:card>
+</aura:component>
