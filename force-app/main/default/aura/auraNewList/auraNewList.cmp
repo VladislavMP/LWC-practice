@@ -1,0 +1,27 @@
+<aura:component controller="viewListController" 
+    implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="listContact10" type="Contact[]"/>
+    <aura:attribute name="selectedItem" type="Contact"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:handler name="selectItem" event="c:auraSelectItem" action="{!c.handleSelectEvent}"/>
+    <lightning:card class="card-container">
+        {!v.selectedItem.Name}
+        <div class="slds-grid slds-grid_vertical">
+            <div class="slds-col slds-m-top_small">
+            </div>
+            <div class="slds-col slds-m-left_small slds-m-top_small slds-m-right_small slds-grid slds-gutters">
+                <div class="slds-col slds-size_5-of-12 col-border">
+                <aura:if isTrue="{!v.listContact10}">
+                    <aura:iteration items="{!v.listContact10}" var="item">
+                        <c:auraItem item="{!item}"/>
+                    </aura:iteration>
+                </aura:if>
+                </div>
+                <div class="slds-col slds-size_7-of-12">
+                </div>
+            </div>
+            <div class="slds-col slds-m-top_small slds-align_absolute-center">
+            </div>
+        </div>
+        </lightning:card>
+</aura:component>	

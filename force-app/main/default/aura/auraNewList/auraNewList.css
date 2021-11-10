@@ -1,0 +1,30 @@
+.THIS {
+}
+.THIS .info  {
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(49, 49, 49);
+    border-width: 1px;
+    padding: 1px;
+    width: 100%;
+    height: 100%;
+}
+
+.THIS .col-border {
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(49, 49, 49);
+    border-width: 1px;
+    padding: 5px;
+    height: 503px;
+}
+
+.THIS .create-fild{
+    background-color: rgb(255, 255, 255);
+}
+
+.THIS .edit-fild{
+    background-color: rgb(255, 255, 255);
+}
+
+.THIS .image{
+    background-color: rgb(255, 255, 255);
+}

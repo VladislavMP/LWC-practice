@@ -12,4 +12,11 @@ public with sharing class viewListController {
         Contact contact = (Contact)JSON.deserialize(jsonBody, Contact.class);
         update contact;
     }
+
+    @AuraEnabled(cacheable=true)
+    public static List<Contact> getContactList() {
+        
+        List<Contact> contactList = [SELECT Id, Name, Phone, Email FROM Contact LIMIT 10];
+        return contactList;
+    }
 }
