@@ -1,4 +1,4 @@
-<aura:component controller="viewListController" 
+<aura:component controller="ViewListsController" 
     implements="flexipage:availableForAllPageTypes" access="global">
     <aura:registerEvent name="selectItem" type="c:auraSelectItem"/>
 

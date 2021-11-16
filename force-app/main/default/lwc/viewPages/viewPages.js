@@ -1,4 +1,7 @@
 import { LightningElement, api } from 'lwc';
+import {
+    createPageNumberEvent
+} from './viewPagesHelper.js';
 
 export default class ViewPages extends LightningElement {
     @api currentPage = 1;
@@ -9,19 +12,13 @@ export default class ViewPages extends LightningElement {
     previousHandler(event) {
         this.currentPage = this.currentPage - 1;
         this.pageChanged(this.currentPage);
-        const pageChangedEvent = new CustomEvent('pagechanged', {
-            detail: this.currentPage
-        });
-        this.dispatchEvent(pageChangedEvent);
+        createPageNumberEvent(this.currentPage, this);
     }
 
     nextHandler(event) {
         this.currentPage = this.currentPage + 1;
         this.pageChanged(this.currentPage);
-        const pageChangedEvent = new CustomEvent('pagechanged', {
-            detail: this.currentPage
-        });
-        this.dispatchEvent(pageChangedEvent);
+        createPageNumberEvent(this.currentPage, this);
     }
 
     pageChanged(currentPage) {

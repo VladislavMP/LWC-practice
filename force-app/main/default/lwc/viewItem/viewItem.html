@@ -2,12 +2,18 @@
     <div class="item slds-grid slds-gutters slds-grid_align-spread" >
         <button
             class="button slds-col"
-            onclick={handleClick}>
+            onclick={handleRecordSelection}>
             <div class="slds-col">
                 <p>{contact.Name}</p>
             </div>
         </button>
-        <div class="slds-col">    
+        <div class="slds-col">
+            <lightning-button
+                label="Record Page"
+                class="align-end"
+                onclick={handleToRecordPage}
+            >
+            </lightning-button>    
             <lightning-button
                 label="Edit"
                 class="align-end"

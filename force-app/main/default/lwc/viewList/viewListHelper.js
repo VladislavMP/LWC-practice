@@ -4,7 +4,7 @@ export {
 };
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
-function openEdit() {
+const openEdit = () => {
     let openWindow = {
         openEdit: true,
         openCreate: false,
@@ -15,7 +15,7 @@ function openEdit() {
     return openWindow;
 }
 
-function openCreate() {
+const openCreate = () => {
     let openWindow = {
         openEdit: false,
         openCreate: true,
@@ -26,7 +26,7 @@ function openCreate() {
     return openWindow;
 }
 
-function openView() {
+const openView = () => {
     let openWindow = {
         openEdit: false,
         openCreate: false,
@@ -37,7 +37,7 @@ function openView() {
     return openWindow;
 }
 
-function openStart() {
+const openStart = () => {
     let openWindow = {
         openEdit: false,
         openCreate: false,
@@ -48,7 +48,7 @@ function openStart() {
     return openWindow;
 }
 
-function findContact(contactId, listContact10) {
+const findContact = (contactId, listContact10) => {
     let requiredContact = listContact10.find(
         (contact) => contact.Id === contactId
     );
@@ -56,15 +56,20 @@ function findContact(contactId, listContact10) {
     return requiredContact;
 }
 
-function buildJsonBody(template, contact, cssClass) {
-    template.querySelectorAll(cssClass).forEach(field => {
+const buildJsonBody = (template, contact, cssClass) => {
+    template.querySelectorAll(cssClass).forEach(
+        field => {
         contact[field.label] = field.value;
     });
-    let contactJson = JSON.stringify({ 'attributes': { 'type': 'Contact' }, contact });
+    let contactJson = JSON.stringify({ 
+        'attributes': 
+        { 'type': 'Contact' },
+        contact 
+    });
     return contactJson;
 }
 
-function showErrorMessage(title, message){
+const showErrorMessage = (title, message) => {
     dispatchEvent(
         new ShowToastEvent({
             title: title,
@@ -74,7 +79,7 @@ function showErrorMessage(title, message){
     );
 }
 
-function showSuccessMessage(message){
+const showSuccessMessage = (message) => {
     dispatchEvent(
         new ShowToastEvent({
             title: 'Success',

@@ -1,4 +1,4 @@
-public with sharing class viewListController {
+public with sharing class ViewListsController {
 
     @AuraEnabled
     public static void createContact(String jsonBody) {
@@ -16,7 +16,23 @@ public with sharing class viewListController {
     @AuraEnabled(cacheable=true)
     public static List<Contact> getContactList() {
         
-        List<Contact> contactList = [SELECT Id, Name, Phone, Email FROM Contact LIMIT 10];
+        List<Contact> contactList = [
+            SELECT Id, Name, Phone, Email 
+            FROM Contact 
+            LIMIT 10
+        ];
+        return contactList;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<Contact> getContactList(Integer amount) {
+        
+        List<Contact> contactList = [
+            SELECT Id, Name, Phone, Email 
+            FROM Contact 
+            LIMIT :amount
+        ];
         return contactList;
     }
 }
+

@@ -1,7 +1,7 @@
 import { LightningElement, wire, api, track } from 'lwc';
-import getContactList from '@salesforce/apex/viewTableContriller.getContactList';
-import updateContact from '@salesforce/apex/viewListController.updateContact';
-import createContact from '@salesforce/apex/viewListController.createContact';
+import getContactList from '@salesforce/apex/ViewListsController.getContactList';
+import updateContact from '@salesforce/apex/ViewListsController.updateContact';
+import createContact from '@salesforce/apex/ViewListsController.createContact';
 import { refreshApex } from '@salesforce/apex';
 import { publish, MessageContext } from 'lightning/messageService';
 import RECORD_SELECTED_CHANNEL from '@salesforce/messageChannel/Record_Selected__c';

@@ -1,11 +1,27 @@
 import { LightningElement, api } from 'lwc';
 import { deleteRecord } from 'lightning/uiRecordApi';
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import {
+    showErrorMessage, showSuccessMessage
+} from './viewItemHelper.js';
+import { NavigationMixin } from 'lightning/navigation';
 
-export default class ViewItem extends LightningElement {
+export default class ViewItem extends NavigationMixin(LightningElement) {
     @api contact;
 
-    handleClick(event) {
+    handleToRecordPage() {
+        this[NavigationMixin.GenerateUrl]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: this.contact.Id,
+                objectApiName: 'Contact',
+                actionName: 'view'
+            }
+        }).then(url => {
+            window.open(url, "_blank");
+        });
+    }
+
+    handleRecordSelection(event) {
         const selectEvent = new CustomEvent('select', {
             detail: this.contact.Id
         });
@@ -18,23 +34,11 @@ export default class ViewItem extends LightningElement {
         });
         deleteRecord(this.contact.Id)
             .then(() => {
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Success',
-                        message: 'Record deleted',
-                        variant: 'success'
-                    })
-                );
+                showSuccessMessage('Record deleted');
                 this.dispatchEvent(updateEvent);
             })
             .catch(error => {
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Error deleting record',
-                        message: error.body.message + this.contact.Id,
-                        variant: 'error'
-                    })
-                );
+                showErrorMessage('Error deleting record', error.body.message);
             });
     }
 

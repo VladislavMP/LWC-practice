@@ -1,4 +1,4 @@
-<aura:component controller="viewListController" 
+<aura:component controller="ViewListsController" 
     implements="flexipage:availableForAllPageTypes" access="global">
     <aura:attribute name="listContact10" type="Contact[]"/>
     <aura:attribute name="selectedItem" type="Contact"/>
